@@ -1,9 +1,19 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
+import { Heading } from '@chakra-ui/core';
+import styled from '@emotion/styled';
 
 import { getAnimeBySlug, getAllAnimes } from '../../lib/api';
 import markdownToHtml from '../../lib/markdownToHtml';
+import Container from '../../components/container';
+
+const Content = styled.div`
+  p {
+    margin: 2em 0;
+    line-height: 1.65;
+  }
+`;
 
 function Anime({ anime }) {
   const router = useRouter();
@@ -13,7 +23,7 @@ function Anime({ anime }) {
   }
 
   return (
-    <div>
+    <Container>
       {router.isFallback ? (
         <p>Loading…</p>
       ) : (
@@ -23,11 +33,16 @@ function Anime({ anime }) {
               <title>{anime.title}</title>
               {/* <meta property="og:image" content={anime.ogImage.url} /> */}
             </Head>
-            <div dangerouslySetInnerHTML={{ __html: anime.content }} />
+            <Heading as="h1" size="2xl" marginY="0.5em">
+              {anime.title}
+            </Heading>
+            <Content>
+              <div dangerouslySetInnerHTML={{ __html: anime.content }} />
+            </Content>
           </article>
         </>
       )}
-    </div>
+    </Container>
   );
 }
 

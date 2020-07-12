@@ -10,7 +10,7 @@ function Home({ allAnimes }) {
       <Heading letterSpacing="tight" mt={8} mb={2} as="h1" size="2xl">
         Bienvenido a anime adventure
       </Heading>
-      <Text color="gray.700">
+      <Text>
         Directorio de los mejores animes jamás nombrados.
       </Text>
 
@@ -22,7 +22,7 @@ function Home({ allAnimes }) {
                 <a>{anime.title}</a>
               </Link>
             </Heading>
-            <Text color="gray.700">{anime.summary}</Text>
+            <Text>{anime.summary}</Text>
           </Box>
         ))}
       </Box>

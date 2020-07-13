@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
-import { Heading } from '@chakra-ui/core';
+import { Heading, Box } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 
 import { getAnimeBySlug, getAllAnimes } from '../../lib/api';
@@ -28,7 +28,7 @@ function Anime({ anime }) {
         <p>Loading…</p>
       ) : (
         <>
-          <article className="mb-32">
+          <Box as="article" marginBottom={12}>
             <Head>
               <title>{anime.title}</title>
               {/* <meta property="og:image" content={anime.ogImage.url} /> */}
@@ -39,7 +39,7 @@ function Anime({ anime }) {
             <Content>
               <div dangerouslySetInnerHTML={{ __html: anime.content }} />
             </Content>
-          </article>
+          </Box>
         </>
       )}
     </Container>
